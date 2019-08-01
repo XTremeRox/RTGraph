@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>HomePage</title>
+        <link rel="stylesheet" href="bootstrap/normalize.css">
+        <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+        <style>
+            body, html, .container{
+                height: 100%;
+            }
+            body{
+                background: url('bck.jpg') no-repeat center center fixed;
+                background-size: cover;
+                height: 100%;
+                overflow: hidden;
+            }
+            h1{
+                font-size: 100px;
+                color: white;
+                text-align: center;
+                margin-top: 30%;
+            }
+            #upper{
+                height: 40%;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="row" id="upper">
+                <div class="col-md-6">
+                    <a href="no2.php" target="_blank">
+                        <h1><strong>NO2</strong></h1>
+                    </a>
+                </div>
+                <div class="col-md-6">
+                    <a href="voc.php" target="_blank">
+                        <h1><strong>VOC</strong></h1>
+                    </a>
+                </div>
+            </div>
+            <div class="row" id="lower">
+                <div class="col-md-6">
+                    <a href="pm10.php" target="_blank">
+                        <h1><strong>PM10</strong></h1>
+                    </a>
+                </div>
+                <div class="col-md-6">
+                    <a href="pm25.php" target="_blank">
+                        <h1><strong>PM2.5</strong></h1>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script src="src/jquery.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+</html>
