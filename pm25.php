@@ -94,7 +94,7 @@
 		});
 	</script>
     <?php if(isset($_POST['time'])){ 
-        echo '<script src="chartshow.js"></script>';
+        echo '<script src="chartshow2.js"></script>';
         echo '<script>$(document).ready(function(){
             for (index=0; index<obj1.measures.length; index++){
                 config.data.datasets[0].data.push({

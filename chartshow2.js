@@ -48,7 +48,7 @@ var config = {
                 beginAtZero: false,
                 scaleLabel: {
                     display: true,
-                    labelString: 'ppb'
+                    labelString: 'µg/m3'
                 }
             }]
         }
