@@ -5,7 +5,7 @@ var config = {
     type: 'line',
     data: {
         datasets: [{
-            label: 'Flow 1',
+            label: 'CO2 Sensor Data',
             fill: false,
             borderColor: window.chartColors.red,
             backgroundColor: window.chartColors.red,

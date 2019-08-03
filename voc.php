@@ -75,7 +75,7 @@
 		if(isset($_POST['time'])){ 
 			echo 'var jsondata1 =\''.$json1.'\';';
 			echo 'var obj1 = JSON.parse(jsondata1);' ;
-			echo 'var jsondata2 =\''.$json1.'\';';
+			echo 'var jsondata2 =\''.$json2.'\';';
 			echo 'var obj2 = JSON.parse(jsondata2);' ;
 		}
 		?>
