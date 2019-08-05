@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Firebase Realtime Graph Glassbox</title>
+    <script src="../src/jquery.min.js"></script>
+	<script src="../bootstrap/js/bootstrap.min.js"></script>
+	<script src="../src/moment.min.js"></script>
+	<script src="../src/utils.js"></script>
+	<script src="../src/Chart.min.js"></script>
+	<link rel="stylesheet" href="../datepicker/daterangepicker.css">
+	<link rel="stylesheet" href="../src/Chart.min.css">
+	<link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+	<style>
+		canvas {
+			-moz-user-select: none;
+			-webkit-user-select: none;
+			-ms-user-select: none;
+		}
+	</style>
+</head>
+<body>
+    <div class="container">
+        <div style="width:100%;">
+                <canvas id="canvas"></canvas>
+        </div>
+        <div>
+            <a href="index.html"><h4>Return Home</h4></a>
+        </div>
+    </div>
+    <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
+
+  <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/6.3.4/firebase-app.js"></script>
+
+  <!-- Add Firebase products that you want to use -->
+  <script src="https://www.gstatic.com/firebasejs/6.3.4/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.3.4/firebase-database.js"></script>
+  <script>
+    var ctx = $('#canvas');
+    var plot_used = '/GLASS_BOX -> 98:D3:37:00:BB:8B/default/Pollution Data';
+    //var data = [1,2,3,4,5];
+    var config = {
+        type: 'line',
+        data: {
+            datasets: [{
+                label: 'Flow 1',
+                fill: false,
+                borderColor: window.chartColors.red,
+                backgroundColor: window.chartColors.red,
+                data: []
+            }]
+        },
+        options: {
+            responsive: true,
+            title: {
+                display: true,
+                text: plot_used
+            },
+            scales: {
+                xAxes: [{
+                    type:'time',
+                    time:{
+                        displayFormats: {
+                            minute: 'h:mm a'
+                        }
+                    },
+                    display: true,
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'Time'
+                    },
+                    ticks: {
+                        callback: function(dataLabel, index) {
+                            // Hide the label of every 2nd dataset. return null to hide the grid line too
+                            return index % 2 === 0 ? dataLabel : '';
+                        }
+                    }
+                }],
+                yAxes: [{
+                    display: true,
+                    beginAtZero: false,
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'µg/cm²'
+                    }
+                }]
+            }
+        }
+    };
+    var myChart = new Chart(ctx, config);
+    // TODO: Replace the following with your app's Firebase project configuration
+    var firebaseConfig = {
+        apiKey: "AIzaSyAhifMzJIK2g7o6BbSAeUpsCe9tQKXMTaU",
+        authDomain: "envdatabase.firebaseio.com",
+        databaseURL: "https://envdatabase.firebaseio.com/",
+        projectId: "envdatabase",
+        storageBucket: "envdatabase.appspot.com"
+    };
+
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    var database = firebase.database();
+    var ref = database.ref().child(plot_used).limitToLast(25);
+    ref.on("child_added", function(newdata){
+            //console.log(newdata.val().co2)
+            config.data.datasets[0].data.push({
+                x: moment(newdata.val().current_Date_time),
+                y: newdata.val().pm1
+            });
+            myChart.update();
+    })
+  </script>
+  <script>$(document).ready(function(){
+    
+    // if (config.data.datasets.length > 0) {
+    //     config.data.datasets[0].data.push({
+    //         x: \'1564520980\',
+    //         y: \'10\'
+    //     });
+    //     config.data.datasets[1].data.push({
+    //         x: \'1564691400\',
+    //         y: \'15\'
+    //     });
+    
+       
+    //}
+    });
+    </script>
+</body>
+</html>

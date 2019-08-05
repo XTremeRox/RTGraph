@@ -4,76 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Firebase Realtime Graph</title>
-    <script src="../src/jquery.min.js"></script>
-	<script src="../bootstrap/js/bootstrap.min.js"></script>
-	<script src="../src/moment.min.js"></script>
-	<script src="../src/utils.js"></script>
-	<script src="../src/Chart.min.js"></script>
-	<link rel="stylesheet" href="../datepicker/daterangepicker.css">
-	<link rel="stylesheet" href="../src/Chart.min.css">
-	<link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
-	<style>
-		canvas {
-			-moz-user-select: none;
-			-webkit-user-select: none;
-			-ms-user-select: none;
-		}
-	</style>
+    <title>Index</title>
 </head>
 <body>
-    <div class="container">
-        <div style="width:100%;">
-                <canvas id="canvas"></canvas>
-        </div>
-    </div>
-    <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
-
-  <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
-  <script src="https://www.gstatic.com/firebasejs/6.3.4/firebase-app.js"></script>
-
-  <!-- Add Firebase products that you want to use -->
-  <script src="https://www.gstatic.com/firebasejs/6.3.4/firebase-auth.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/6.3.4/firebase-database.js"></script>
-  <script src="chartshow.js"></script>
-  <script>
-    // TODO: Replace the following with your app's Firebase project configuration
-    var firebaseConfig = {
-        apiKey: "AIzaSyAhifMzJIK2g7o6BbSAeUpsCe9tQKXMTaU",
-        authDomain: "envdatabase.firebaseio.com",
-        databaseURL: "https://envdatabase.firebaseio.com/",
-        projectId: "envdatabase",
-        storageBucket: "envdatabase.appspot.com"
-    };
-
-    // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
-    var database = firebase.database();
-    var ref = database.ref().child(plot_used).limitToLast(25);
-    ref.on("child_added", function(newdata){
-            //console.log(newdata.val().co2)
-            config.data.datasets[0].data.push({
-                x: moment(newdata.val().current_Date_time),
-                y: newdata.val().co2
-            });
-            myChart.update();
-    })
-  </script>
-  <script>$(document).ready(function(){
-    
-    // if (config.data.datasets.length > 0) {
-    //     config.data.datasets[0].data.push({
-    //         x: \'1564520980\',
-    //         y: \'10\'
-    //     });
-    //     config.data.datasets[1].data.push({
-    //         x: \'1564691400\',
-    //         y: \'15\'
-    //     });
-    
-       
-    //}
-    });
-    </script>
+    <h3>Glass Box</h3>
+    <ul>
+        <li><a href="glassbox/co.html">CO</a></li>
+        <li><a href="glassbox/co2.html">CO2</a></li>
+        <li><a href="glassbox/humidity.html">HUMIDITY</a></li>
+        <li><a href="glassbox/no2.html">NO2</a></li>
+        <li><a href="glassbox/pm1.html">PM1</a></li>
+        <li><a href="glassbox/pm10.html">PM10</a></li>
+        <li><a href="glassbox/pm25.html">PM2.5</a></li>
+        <li><a href="glassbox/temp.html">TEMPERATURE</a></li>
+    </ul>
+    <br>
+    <h3>Green Box</h3>
+    <ul>
+        <li><a href="greenbox/co.html">CO</a></li>
+        <li><a href="greenbox/co2.html">CO2</a></li>
+        <li><a href="greenbox/humidity.html">HUMIDITY</a></li>
+        <li><a href="greenbox/no2.html">NO2</a></li>
+        <li><a href="greenbox/pm1.html">PM1</a></li>
+        <li><a href="greenbox/pm10.html">PM10</a></li>
+        <li><a href="greenbox/pm25.html">PM2.5</a></li>
+        <li><a href="greenbox/temp.html">TEMPERATURE</a></li>
+    </ul>
+    <ul>
+        <li><a href="glassbox.html">Glass Box</a></li>
+        <li><a href="greenbox.html">Green Box</a></li>
+    </ul>
 </body>
 </html>

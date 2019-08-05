@@ -1,14 +1,19 @@
 var ctx = $('#canvas');
-var plot_used = '/GLASS_BOX -> 98:D3:37:00:BB:8B/default/Pollution Data';
 //var data = [1,2,3,4,5];
 var config = {
     type: 'line',
     data: {
         datasets: [{
-            label: 'CO2 Sensor Data',
+            label: 'Flow 1',
             fill: false,
             borderColor: window.chartColors.red,
             backgroundColor: window.chartColors.red,
+            data: []
+        }, {
+            label: 'Flow 2',
+            fill: false,
+            borderColor: window.chartColors.green,
+            backgroundColor: window.chartColors.green,
             data: []
         }]
     },
@@ -16,7 +21,7 @@ var config = {
         responsive: true,
         title: {
             display: true,
-            text: plot_used
+            text: 'NO2 Sensor Data'
         },
         scales: {
             xAxes: [{
